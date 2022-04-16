@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Planes</title>
+    <link rel="icon" id="favicon" type="image/x-icon" th:href="@{/images/emblem.jpg}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/aircraft_managment.css}">
+</head>
+<body>
+<h1>All Planes</h1>
+<div>
+    <table style="border-collapse: collapse" border="1">
+        <tr>
+            <th>id</th>
+            <th>Aircraft Name</th>
+            <th>Passenger Capacity</th>
+            <th>Flight Range</th>
+            <th>Cruising Speed</th>
+            <th>Aircraft Category</th>
+            <th>Operations</th>
+        </tr>
+
+        <div th:each="plane : ${planeList}">
+            <tr>
+                <td>
+                    <span th:text="${plane.getId()}">id</span>
+                </td>
+                <td>
+                    <span th:text="${plane.getAircraftName()}">Aircraft Name</span>
+                </td>
+                <td>
+                    <span th:text="${plane.getPassengerCapacity()}">Passenger Capacity</span>
+                </td>
+                <td>
+                    <span th:text="${plane.getFlightRange()}">Flight Range</span>
+                </td>
+                <td>
+                    <span th:text="${plane.getCruisingSpeed()}">Cruising Speed</span>
+                </td>
+                <td>
+                    <span th:text="${plane.getAircraftCategory().getNameCategory()}">Aircraft Category</span>
+                </td>
+                <td>
+                    <div class="button">
+                        <form class="updateButton" method="get" th:action="@{/admin/aircraft-management/update}">
+                            <button type="submit" th:name="planeID" th:value="${plane.getId()}">Update</button>
+                        </form>
+                        <form class="deleteButton" method="post" th:action="@{/admin/delete}">
+                            <button type="submit" th:name="planeID" th:value="${plane.getId()}">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </div>
+    </table>
+    <br>
+    <input type="button" value="add" onclick="window.location.href='/admin/aircraft-management/create-plane'"/>
+
+    <input type="button" value="add category" onclick="window.location.href='/admin/aircraft-management/create-category'"/>
+
+</div>
+
+
+</body>
+</html>

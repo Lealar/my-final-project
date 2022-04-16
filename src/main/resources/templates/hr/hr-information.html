@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hr</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/hr/hr-information.css}">
+    <link rel="icon" id="favicon" type="image/x-icon" th:href="@{/images/emblem.jpg}"/>
+</head>
+<body>
+
+<h1>Welcome to HR page</h1>
+<h2>All registered users:</h2>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Login</th>
+        <th>Role</th>
+        <th>Country</th>
+        <th>Phone Number</th>
+        <th>email</th>
+        <th>Password</th>
+        <th>Operations</th>
+    </tr>
+    <div th:each="usr : ${allUsers}">
+
+        <tr>
+            <td>
+                <span th:text="${usr.id}">id</span>
+            </td>
+            <td>
+                <span th:text="${usr.firstName}">First Name</span>
+            </td>
+            <td>
+                <span th:text="${usr.lastName}">Last Name</span>
+            </td>
+            <td>
+                <span th:text="${usr.login}">Login</span>
+            </td>
+            <td>
+                <span th:text="${usr.role}">Role</span>
+            </td>
+            <td>
+                <span th:text="${usr.country}">Country</span>
+            </td>
+            <td>
+                <span th:text="${usr.phoneNumber}">Phone Number</span>
+            </td>
+            <td>
+                <span th:text="${usr.email}">Email</span>
+            </td>
+            <td>
+                <span th:text="${usr.password}">Password</span>
+            </td>
+
+            <td>
+                <div class="button">
+                    <form class="updateButton" method="GET" th:action="@{/hr/updateInfo}">
+                        <button type="submit" th:name="userId" th:value="${usr.id}">Update
+                        </button>
+                    </form>
+                    <form class="deleteButton" method="POST" th:action="@{/hr/deleteUser}">
+                        <button type="submit" th:name="userId" th:value="${usr.id}">Delete</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </div>
+
+</table>
+
+<br>
+<input type="button" value="add" onclick="window.location.href = '/hr/addNewUser'"/>
+
+</body>
+</html>

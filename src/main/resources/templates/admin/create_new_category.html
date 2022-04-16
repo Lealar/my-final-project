@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Category</title>
+</head>
+<body>
+
+<h1>Create New Category: </h1>
+<form method="post" th:action="@{create-category/save}" th:object="${category}">
+
+    <input type="text" th:field="*{nameCategory}" placeholder="Category Name" autocomplete="on">
+
+
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

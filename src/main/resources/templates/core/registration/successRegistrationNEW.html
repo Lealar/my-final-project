@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1> Thanks for Registration </h1>
+<div>
+    <div>
+        <p>Your first name:
+            <span th:text="*{newRegisteredUser.firstName}">firstName</span>
+        </p>
+    </div>
+    <div>
+        <p>Your last name:
+        <span th:text="*{newRegisteredUser.lastName}">lastName</span>
+        </p>
+    </div>
+    <div>
+        <p>Your login:
+        <span th:text="*{newRegisteredUser.login}">Login</span>
+        </p>
+    </div>
+    <div>
+        <p>Your Password:
+        <span th:text="*{newRegisteredUser.password}">password</span>
+        </p>
+    </div>
+    <div>
+        <p>Your Country:
+        <span th:text="*{newRegisteredUser.country}">Country</span>
+        </p>
+    </div>
+    <div>
+        <p>Your Phone Number:
+        <span th:text="*{newRegisteredUser.phoneNumber}">phoneNumber</span>
+        </p>
+    </div>
+    <div>
+        <p>Your email:
+        <span th:text="*{newRegisteredUser.email}">email</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

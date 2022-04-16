@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+  <link rel="icon" id="favicon" type="image/x-icon" th:href="@{/images/favicon.jpg}">
+</head>
+<body>
+<header class="sticky">
+  <a href=""><img id="emblem" th:src="@{/images/emblem.jpg}" alt="emblem"/></a>
+  <a href="registration" id="registration">Registration</a>
+  <a href="" id="jR">jetRent</a>
+</header>
+<article>
+  <h1 class="sing-in">Please sign in</h1>
+
+  <form th:method="POST" th:action="@{/login/success-login}" th:object="${loginUser}" class="login_form">
+    <fieldset>
+      <legend>Login form</legend>
+      <input type="text" th:field="*{login}" id="login" placeholder="Login" autocomplete="on" onchange="activateSubmitButton()"
+                  autofocus="on"/>
+      <br>
+      <input type="password" th:field="*{password}" id="password" name="password" placeholder="Password"
+                  onchange="activateSubmitButton()" autocomplete="on"/>
+      <br>
+      <!--Remember me<th:input type="checkbox" path="rememberInSystem" value="true"/>-->
+      <br>
+      <input type="submit" id="submit_button" value="Submit"> <!--disabled onclick="return isLengthLoginAndPass()">-->
+    </fieldset>
+  </form>
+
+  <!-- <form class="login_form" action="home.jsp">
+  <fieldset>
+    <legend>Login Form</legend>
+    <label for="login"></label><input type="text" id="login" name="login" placeholder="Login" autocomplete="on"
+                                      onchange="activateSubmitButton()" autofocus><br>
+    <label for="password"></label><input type="password" id="password" name="password" placeholder="Password"
+                                         onchange="activateSubmitButton()" autocomplete="on"><br>
+    <label>
+      <input type="checkbox" id="checkbox" value="remember-me">Remember me<br></label>
+    <input type="submit" id="submit_button" value="Submit" disabled onclick="return isLengthLoginAndPass()">
+  </fieldset>
+</form>-->
+
+</article>
+
+<footer>
+  <h2>Покоряй расстояния</h2>
+  <h2>Получай незабываемые ощущение от полета</h2>
+  <h2>Арендуй самолет в jetRent</h2>
+</footer>
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+</body>
+</html>

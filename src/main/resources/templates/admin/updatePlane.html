@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Plane</title>
+    <link rel="icon" id="favicon" type="image/x-icon" th:href="@{/images/emblem.jpg}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/updatePlane.css}">
+</head>
+<body>
+<h1>Plane Info:</h1>
+<br>
+    <form method="post" th:action="@{/admin/update/save-aircraft}" th:object="${planeToUpdate}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+
+        <div th:if="*{imagePath != null}">
+            <img th:src="@{*{imagePath}}" alt="Plane Image">
+        </div>
+        <div th:if="*{imagePath == null}">
+            <img th:src="@{/images/planeIMG/defaultPlane.png}" alt="Plane Avatar">
+        </div>
+        <br><br>
+        <input type="text" th:field="*{aircraftName}"
+               placeholder="Aircraft Name" autocomplete="on" autofocus="on"/>
+        <br><br>
+        <input type="text" th:field="*{passengerCapacity}"
+               placeholder="Passenger Capacity" autocomplete="on"/>
+        <br><br>
+        <input type="text" th:field="*{flightRange}"
+               placeholder="Flight Range" autocomplete="on" />
+        <br><br>
+        <input type="text" th:field="*{cruisingSpeed}"
+               placeholder="Cruising Speed" autocomplete="on" />
+        <br><br>
+     <!--   <input type="text" th:field="*{aircraftCategory}"
+               placeholder="Aircraft Categories" autocomplete="on" />
+-->
+        <select th:field="*{aircraftCategory.id}">
+            <option value=""> -- </option>
+            <option th:each="category : ${categoriesList}"
+                    th:text="${category.nameCategory}"
+                    th:value="${category.id}"
+                    ></option>
+        </select>
+        <p>Upload an image of the plane</p>
+        <input type="file" name="photo" multiple="true" accept="image/*, image/jpeg">
+        <br><br>
+        <input type="submit" value="Submit">
+
+
+    </form>
+
+
+</body>
+</html>

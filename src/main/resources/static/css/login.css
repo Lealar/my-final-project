@@ -1,0 +1,96 @@
+body {
+    background-image: url(../images/background_home.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    color: gold;
+    font-family: Georgia, Tahoma, serif;
+    font-size: 16px;
+    text-shadow: black 1px 0 4px;
+}
+
+header {
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    height: 4em;
+}
+
+article {
+    display: block;
+    text-align: center;
+}
+
+#emblem {
+    width: 50px;
+    height: 50px;
+    margin-left: 5%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+#jR, #registration {
+    margin: 1%;
+    display: inline-block;
+    font-size: 1.8em;
+    color: gold;
+    text-decoration: none;
+    float: right;
+}
+
+.sing-in {
+    text-align: center;
+    padding: 60px;
+    font-size: 3em;
+}
+
+#login, #password {
+    height: 28px;
+    width: 15em;
+    border-radius: 5px;
+    margin: 5px;
+    border-color: darkgray;
+    border-width: 3px;
+}
+
+footer {
+    padding-top: 10em;
+    padding-left: 3em;
+    font-style: italic;
+}
+
+#checkbox, #submit_button {
+    margin: 7px;
+    border-radius: 5px;
+}
+
+.login_form {
+    display: inline-block;
+    text-align: center;
+    width: 40em;
+}
+
+legend {
+    text-align: left;
+    margin-left: 40px;
+    font-size: 20px;
+}
+
+#submit_button {
+    height: 2em;
+    width: 5em;
+    font-size: 14px;
+}
+
+#submit_button:hover {
+    background-color: darkgray;
+    color: gold;
+    text-shadow: black 1px 0 4px;
+}
+
+input:focus {
+    background: #ffe;
+    border: 1px solid #29B0D9;
+}
+

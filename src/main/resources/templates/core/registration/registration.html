@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+  <link rel="icon" id="favicon" type="image/x-icon" th:href="@{/images/favicon.jpg}"/>
+</head>
+<body>
+
+<header id="header">
+  <a href="/login"><img id="emblem" th:src="@{/images/emblem.jpg}" alt="emblem"></a>
+  <a href="/login" id="logout">Logout</a>
+  <a href="/home" id="jR">jetRent</a>
+</header>
+<article>
+  <div class="registration_block">
+    <div class="registration_header">
+      <h1>Registration form:</h1>
+    </div>
+    <div class="registration_field">
+      <form method="POST" th:action="@{/registration/success-registration}" th:object="${newRegisteredUser}">
+
+        <input type="text" th:field="*{firstName}" id="firstname"
+               name="Firstname" placeholder="First name" autocomplete="on" autofocus="on"/>
+        <br>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('firstName')}"
+              th:errors="*{firstName}">Name Error</span>
+
+        <input type="text" th:field="*{lastName}" id="lastname"
+               name="Lastname" placeholder="Last name" autocomplete="on"/>
+
+        <input type="text" th:field="*{login}" id="login" name="Login" placeholder="Login"
+                    autocomplete="on"/>
+        <!--<br><form:errors path="login"/>-->
+
+        <input type="text" th:field="*{phoneNumber}" placeholder="Phone number"/>
+        <!--<br><errors path="phoneNumber"/>-->
+
+        <input type="text" th:field="*{email}" placeholder="email"/>
+        <!--<br><form:errors path="email"/>-->
+
+        <input type="text" th:field="*{country}" placeholder="Country">
+        <!--<form:select path="country" id="region">
+          <form:options items="${newRegisteredUser.countries}"/>
+        </form:select>-->
+
+
+        <input type="password" th:field="*{password}" id="password" name="Password"
+                       placeholder="Password" autocomplete="on"
+                       onchange="regexpPassword()"/>
+
+        <input type="password" id="repeat-password" name="Repeat Password"
+               placeholder="Repeat Password" autocomplete="on" onchange="passwordValidation()"/>
+
+
+        <input type="submit" id="registration" value="Registration" onclick="return validation()">
+
+      </form>
+
+
+    <!-- <form>
+      <label for="login"></label><input type="text" id="login" name="Login" placeholder="Login"
+                                        autocomplete="on" autofocus><br>
+      <label for="firstname"></label><input type="text" id="firstname" name="Firstname"
+                                            placeholder="First name" autocomplete="on"><br>
+      <label for="lastname"></label><input type="text" id="lastname" name="Lastname" placeholder="Last name"
+                                           autocomplete="on"><br>
+      <label>
+        <select name="Choose country" id="region">
+          <optgroup label="Region">
+            <option label="Choose country"></option>
+            <option value="r1">USA</option>
+            <option value="r2">Canada</option>
+            <option value="r3">Europe</option>
+            <option value="r4">Russia</option>
+            <option value="r5">China</option>
+          </optgroup>
+        </select>
+      </label><br>
+      <label for="password"></label><input type="password" id="password" name="Password"
+                                           placeholder="Password" autocomplete="on"
+                                           onchange="regexpPassword()"><br>
+      <label for="repeat-password"></label><input type="password" id="repeat-password" name="Repeat Password"
+                                                  placeholder="Repeat Password" autocomplete="on"
+                                                  onchange="passwordValidation()"><br>
+      <input type="submit" id="registration" value="Registration" onclick="return validation()">
+    </form>-->
+    </div>
+  </div>
+</article>
+<script type="text/javascript" src="<c:url value="/resources/js/registration.js"/>"></script>
+</body>
+</html>

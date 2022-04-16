@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="icon" id="favicon" type="image/x-icon" th:href="@{/images/emblem.jpg}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/hr/userInfoHR.css}">
+</head>
+<body>
+<h1>User info</h1>
+<br>
+<form method="post" th:action="@{/hr/addNewUser/saveUser}" th:object="${newUser}" enctype="multipart/form-data">
+
+    <input type="hidden" th:field="*{id}">
+
+
+    <div th:if="*{avatarPath != null}">
+        <img th:src="@{*{avatarPath}}" width="500px" alt="Avatar"/>
+    </div>
+    <div th:if="*{avatarPath == null}">
+        <img th:src="@{/images/usersAvatar/defaultAvatar.png}" width="500px" alt="Avatar"/>
+    </div>
+
+    <br>
+    <input type="text" th:field="*{firstName}" id="firstname"
+           name="Firstname" placeholder="First name" autocomplete="on" autofocus="on"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('firstName')}"
+          th:errors="*{firstName}">Name Error</span>
+    <br><br>
+    <input type="text" th:field="*{lastName}" id="lastname"
+           name="Lastname" placeholder="Last name" autocomplete="on"/>
+    <br><br>
+    <input type="text" th:field="*{login}" id="login" name="Login" placeholder="Login"
+           autocomplete="on"/>
+    <!--<br><form:errors path="login"/>-->
+    <br><br>
+    <input type="text" th:field="*{phoneNumber}" placeholder="Phone number"/>
+    <!--<br><errors path="phoneNumber"/>-->
+    <br><br>
+    <input type="text" th:field="*{email}" placeholder="email"/>
+    <!--<br><form:errors path="email"/>-->
+    <br><br>
+    <input type="text" th:field="*{country}" placeholder="Country">
+    <!--<form:select path="country" id="region">
+      <form:options items="${newRegisteredUser.countries}"/>
+    </form:select>-->
+    <br><br>
+
+    <input type="text" th:field="*{role}" placeholder="Role">
+    <br><br>
+    <input type="password" th:field="*{password}" id="password" name="Password"
+           placeholder="Password" autocomplete="on"
+           onchange="regexpPassword()"/>
+    <br><br>
+    <input type="password" id="repeat-password" name="Repeat Password"
+           placeholder="Repeat Password" autocomplete="on" onchange="passwordValidation()"/>
+
+    <br><br>
+    <p>Загрузите свою фотографию</p>
+    <!--  <p th:text="*{message}" th:if="${message ne null}"></p>-->
+    <p><input type="file" name="photo" multiple="true" accept="image/*, image/jpeg"></p>
+    <br><br>
+    <input type="submit" value="OK">
+
+</form>
+
+</body>
+</html>
